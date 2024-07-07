@@ -9,11 +9,16 @@ import matplotlib.pyplot as plt
 import os
 
 #%%
-device = "cuda:7"
+device = "cuda"
 model_name = "meta-llama/Llama-2-7b-chat-hf"
-model = AutoModelForCausalLM.from_pretrained(model_name).half()
+hf_token = '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'
+model = AutoModelForCausalLM.from_pretrained(model_name,
+                                             token=hf_token,
+                                             ).half()
 model.to(device)
-tokenizer = AutoTokenizer.from_pretrained(model_name, add_bos_token = True, add_eos_token = False)
+tokenizer = AutoTokenizer.from_pretrained(model_name,
+                                          token=hf_token,
+                                          add_bos_token = True, add_eos_token = False)
 
 #%%
 
